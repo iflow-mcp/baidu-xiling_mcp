@@ -16,6 +16,7 @@ from mcp_server_baidu_digitalhuman.dhapi import (
     MCPVoicesResponse,
     Generate123VideoRequest,
     MCPText2AudioStatusResponse,
+    MCPText2AudioGenerateResponse,
     Text2AudioGenerateRequest,
     VideoGenerateRequest,
     DHParams,
@@ -364,7 +365,7 @@ async def getDhVideoStatus(
 async def generateText2Audio(
         text: Annotated[str, Field(description="文本内容", default=None)],
         voiceId: Annotated[str, Field(description="音色ID，来自getVoices的返回值", default=None)],
-) -> MCPVideoGenerateResponse:
+) -> MCPText2AudioGenerateResponse:
     """
     Generate new audio by inputText using the DH API.
     # outputFormat: str = "mp3"
@@ -383,7 +384,7 @@ async def generateText2Audio(
         ret = await client.generate_text2audio(request)
         return ret
     except Exception as e:
-        return MCPVideoGenerateResponse(error=str(e))
+        return MCPText2AudioGenerateResponse(error=str(e))
 
 @mcp.tool(
     name="getText2AudioStatus",
