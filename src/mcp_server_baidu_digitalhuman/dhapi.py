@@ -165,7 +165,7 @@ class Text2AudioStatusData(BaseModel):
     createTime: Optional[str] = None
     updateTime: Optional[str] = None
 
-class Text2AudioStatusResponse(BaseModel):
+class Text2AudioStatusResponse(BaseDHResponse):
     """ 文本转语音状态结果 """
     code: int
     message: Message
@@ -339,7 +339,7 @@ class MCPText2AudioStatusResponse(BaseDHResponse):
     failedMessage: Optional[str] = None
     audioUrl: Optional[str] = None
     duration: Optional[int] = None
-    textTimestamp: List[TextTimeStampInfo]
+    textTimestamp: Optional[List[TextTimeStampInfo]] = None
     createTime: Optional[str] = None
     updateTime: Optional[str] = None
 
